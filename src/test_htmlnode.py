@@ -14,3 +14,7 @@ class TestTextNode(unittest.TestCase):
     def test_not_eq(self):
         node = HTMLNode("div", "Test div", None, None)
         self.assertNotEqual(node.props_to_html(), ' class="test"')
+
+
+if __name__ == "__main__":
+    unittest.main()
