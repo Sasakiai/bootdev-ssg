@@ -24,3 +24,6 @@ class ParentNode(HTMLNode):
         full += f"</{self.tag}>"
 
         return full
+
+    def __repr__(self):
+        return self.to_html()
