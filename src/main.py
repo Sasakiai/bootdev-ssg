@@ -1,7 +1,13 @@
 import os
 import shutil
 
+from page_gen import generate_page
 from textnode import TextNode, TextType
+
+dir_path_static = "./static"
+dir_path_public = "./public"
+dir_path_content = "./content"
+template_path = "./template.html"
 
 
 def copy_static(source_path, destination_path):
@@ -26,9 +32,13 @@ def copy_content(src, dst):
 
 
 def main():
-    src = "./static"
-    dst = "./public"
-    copy_content(src, dst)
+    copy_content(dir_path_static, dir_path_public)
+
+    generate_page(
+        os.path.join(dir_path_content, "index.md"),
+        template_path,
+        os.path.join(dir_path_public, "index.html"),
+    )
 
 
 if __name__ == "__main__":
