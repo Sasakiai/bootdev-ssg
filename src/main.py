@@ -8,7 +8,9 @@ dir_path_static = "./static"
 dir_path_public = "./docs"
 dir_path_content = "./content"
 template_path = "./template.html"
-basepath = sys.argv[0] or "/"
+basepath = sys.argv[1] or "/"
+
+print(basepath)
 
 
 def copy_static(source_path, destination_path):
