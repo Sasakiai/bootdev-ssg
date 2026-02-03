@@ -31,3 +31,30 @@ def generate_page(from_path, template_path, dest_path):
     with open(dest_path, "w") as f:
         f.write(template)
         f.close()
+
+
+"""
+os.listdir: lists the files inside the given directory
+os.path.join: concatenate path segments
+os.path.isfile: returns true if the given path is a file
+pathlib.Path: the Path class
+"""
+
+
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+    content = os.listdir(dir_path_content)
+
+    for item in content:
+        item_src_path = os.path.join(dir_path_content, item)
+
+        if os.path.isfile(item_src_path):
+            if item.endswith(".md"):
+                generate_page(
+                    item_src_path,
+                    template_path,
+                    os.path.join(dest_dir_path, "index.html"),
+                )
+        else:
+            generate_pages_recursive(
+                item_src_path, template_path, os.path.join(dest_dir_path, item)
+            )
